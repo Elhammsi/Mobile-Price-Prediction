@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regression Model Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;}
+            
+        .container {
+            margin: 50px;
+            width: 80%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px;
+            font-size: 16px;
+        }
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e2e6ea;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333333;
+            font-weight: bold;
+        }
+        input[type="number"], input[type="text"] {
+            width: calc(100% - 24px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Predict with Regression Model</h1>
+    
+    <form method="post" action="">
+        {% csrf_token %}
+        
+
+        
+
+        <label for="avg_rating">Average Rating:</label>
+        <input type="number" step="0.01" id="avg_rating" name="avg_rating" value="7.5"><br>
+
+        <label for="5G_or_not">five_gig:</label>
+        <input type="number" id="five_gig" name="five_gig" value="1"><br>
+
+       
+
+        <label for="num_cores">Number of Cores:</label>
+        <input type="number" id="num_cores" name="num_cores" value="8.0"><br>
+
+        <label for="processor_speed">Processor Speed:</label>
+        <input type="number" step="0.01" id="processor_speed" name="processor_speed" value="2.65"><br>
+
+        <label for="battery_capacity">Battery Capacity:</label>
+        <input type="number" step="0.01" id="battery_capacity" name="battery_capacity" value="4500"><br>
+
+        <label for="fast_charging_available">Fast Charging Available:</label>
+        <input type="number" id="fast_charging_available" name="fast_charging_available" value="1"><br>
+
+        <label for="ram_capacity">RAM Capacity:</label>
+        <input type="number" step="0.01" id="ram_capacity" name="ram_capacity" value="8"><br>
+
+        <label for="internal_memory">Internal Memory:</label>
+        <input type="number" step="0.01" id="internal_memory" name="internal_memory" value="128"><br>
+
+        <label for="screen_size">Screen Size:</label>
+        <input type="number" step="0.01" id="screen_size" name="screen_size" value="6.1"><br>
+
+        <label for="refresh_rate">Refresh Rate:</label>
+        <input type="number" step="0.01" id="refresh_rate" name="refresh_rate" value="120"><br>
+
+        <label for="num_rear_cameras">Number of Rear Cameras:</label>
+        <input type="number" id="num_rear_cameras" name="num_rear_cameras" value="2"><br>
+
+      
+
+        <label for="primary_camera_rear">Primary Camera Rear:</label>
+        <input type="number" step="0.01" id="primary_camera_rear" name="primary_camera_rear" value="12.0"><br>
+
+        <label for="primary_camera_front">Primary Camera Front:</label>
+        <input type="number" step="0.01" id="primary_camera_front" name="primary_camera_front" value="12.0"><br>
+
+        <label for="extended_memory_available">Extended Memory Available:</label>
+        <input type="number" id="extended_memory_available" name="extended_memory_available" value="0"><br>
+
+        <label for="resolution_height">Resolution Height:</label>
+        <input type="number" id="resolution_height" name="resolution_height" value="1792"><br>
+
+        <label for="resolution_width">Resolution Width:</label>
+        <input type="number" id="resolution_width" name="resolution_width" value="828"><br>
+
+        <label for="processor_power">Processor Power:</label>
+        <input type="number" step="0.01" id="processor_power" name="processor_power" value="15.9"><br>
+
+        <label for="ppi">Pixels Per Inch (PPI):</label>
+        <input type="number" step="0.01" id="ppi" name="ppi" value="638827.540984"><br>
+        <label for="brand_name">Brand Name:</label>
+        <input type="text" id="brand_name" name="brand_name" value="apple"><br>
+        <label for="processor_brand">Processor Brand:</label>
+        <input type="text" id="processor_brand" name="processor_brand" value="bionic"><br>
+        <label for="os">Operating System:</label>
+        <select id="os" name="os">
+            <option value="ios">ios</option>
+            <option value="android">Android</option>
+            <option value="other">Others</option>
+        </select><br>
+
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction %}
+    <h2>Prediction: {{ prediction }} euro</h2>
+{% endif %}
+</div>
+</body>
+</html>
